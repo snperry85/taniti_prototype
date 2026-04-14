@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity - Taniti Island</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const activities = {
+      snorkeling: {
+        title: "Snorkeling",
+        image: "snorkeling.jpg",
+        alt: "Snorkeling in Taniti's crystal-clear waters",
+        credit: "Photo by Claudia a, Pexels",
+        creditUrl: "https://www.pexels.com/photo/a-person-snorkeling-11215016/",
+        description: "Explore Taniti's crystal-clear waters and vibrant coral reefs. Snorkeling tours depart daily from Yellow Leaf Bay and are suitable for all experience levels. Equipment rental is available on-site. The bay is calm and family-friendly, making it a great choice for first-time visitors and experienced snorkelers alike."
+      },
+      fishing: {
+        title: "Chartered Fishing Tour",
+        image: "fishing.jpg",
+        alt: "Chartered fishing tour departing from Taniti's harbor",
+        credit: "Photo by selcuk sarikoz, Pexels",
+        creditUrl: "https://www.pexels.com/photo/a-group-of-people-fishing-on-the-rocks-17454841/",
+        description: "Join an experienced local guide for a half-day or full-day chartered fishing excursion in the Pacific waters surrounding Taniti. Tackle and bait are provided. Tours depart from Taniti's small harbor in Yellow Leaf Bay. Both deep-sea and reef fishing options are available."
+      },
+      volcano: {
+        title: "Volcano Tour",
+        image: "volcano.jpg",
+        alt: "Guided jeep tour of Taniti's active volcano",
+        credit: "Photo by Heru Dharma, Pexels",
+        creditUrl: "https://www.pexels.com/photo/adventure-jeep-tour-by-mount-merapi-36889689/",
+        description: "Taniti's mountainous interior is home to a small but active volcano — one of the island's most popular attractions. Guided tours take you through lush rainforest terrain to viewing platforms with stunning views of the volcanic landscape. Tours are led by certified local guides and are suitable for visitors of moderate fitness."
+      },
+      rainforest: {
+        title: "Rainforest Hike",
+        image: "rainforest.jpg",
+        alt: "Lush tropical rainforest trail on Taniti Island",
+        credit: "Photo by Laura Meinhardt, Pexels",
+        creditUrl: "https://www.pexels.com/photo/lush-green-pathway-in-tropical-rainforest-28461838/",
+        description: "Taniti's lush tropical rainforest offers several hiking trails ranging from easy nature walks to more challenging treks through the island's interior. Guided hikes are available and include commentary on local flora, fauna, and indigenous culture. Sturdy footwear is recommended."
+      },
+      zipline: {
+        title: "Zip Lines",
+        image: "zipline.jpg",
+        alt: "Zip-lining over Taniti's rainforest canopy",
+        credit: "Photo by Jeff Vinluan, Pexels",
+        creditUrl: "https://www.pexels.com/photo/people-ziplining-above-water-9223080/",
+        description: "Experience Taniti's rainforest canopy from above on an exciting zip-line tour. Multiple zip-line runs of varying lengths and heights are available, located in the rainforest near the island's interior. All equipment is provided and safety briefings are given before each tour. Suitable for ages 10 and up."
+      },
+      museum: {
+        title: "Local History Museum",
+        image: "museum.jpg",
+        alt: "Interior of Taniti's local history museum",
+        credit: "Photo by Stijn Dijkstra, Pexels",
+        creditUrl: "https://www.pexels.com/photo/ceiling-with-bas-reliefs-and-chandelier-15074424/",
+        description: "Learn about Taniti's rich indigenous culture and history at the island's local history museum, located in Taniti City. Exhibits cover the island's origins, traditional fishing and agricultural practices, and the growth of tourism on the island. The museum is open daily except on national holidays."
+      },
+      helicopter: {
+        title: "Helicopter Ride",
+        image: "helicopter.jpg",
+        alt: "Scenic helicopter ride over Taniti Island",
+        credit: "Photo by Luke Miller, Pexels",
+        creditUrl: "https://www.pexels.com/photo/helicopter-flying-over-forest-10146868/",
+        description: "See Taniti from the air on a scenic helicopter tour. Flights depart from the small airport and offer breathtaking aerial views of Yellow Leaf Bay, the rainforest, and the active volcano. Tours range from 15-minute scenic flights to extended island circuits. Advance booking is recommended."
+      },
+      merriton: {
+        title: "Merriton Landing",
+        image: "merriton.jpg",
+        alt: "Merriton Landing entertainment district on Yellow Leaf Bay",
+        credit: "Photo by Coral Grandbois, Pexels",
+        creditUrl: "https://www.pexels.com/photo/pier-57-in-seattle-washington-13425959/",
+        description: "Merriton Landing is a rapidly developing entertainment district on the north side of Yellow Leaf Bay. The area features a microbrewery, a new dance club, an arcade, art galleries, a bowling alley, and a cinema. Most attractions are within easy walking distance of each other, making it a great destination for an evening out."
+      }
+    };
+
+    window.onload = function() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const activity = activities[id];
+      if (activity) {
+        document.getElementById('activity-title').textContent = activity.title;
+        document.getElementById('activity-description').textContent = activity.description;
+        document.getElementById('activity-img').src = activity.image;
+        document.getElementById('activity-img').alt = activity.alt;
+        document.getElementById('photo-credit').innerHTML = '<a href="' + activity.creditUrl + '" style="color:#666;">' + activity.credit + '</a>, Pexels';
+        document.title = activity.title + ' - Taniti Island';
+      }
+    };
+  </script>
+</head>
+<body>
+  <div class="phone">
+    <div class="status-bar"></div>
+
+    <div class="nav-bar">
+      <a href="things-to-do.html" class="back">&#8592;</a>
+      <h1 id="activity-title">Activity</h1>
+    </div>
+
+    <div class="activity-image">
+      <img id="activity-img" src="" alt="Activity">
+    </div>
+
+    <div class="activity-detail">
+      <p id="activity-description"></p>
+      <br>
+      <a href="#" class="book-btn" onclick="document.getElementById('confirm').style.display='block'; return false;">Book Now</a>
+      <p id="confirm" style="display:none; margin-top:14px; text-align:center; color:#333; font-size:14px;">Thank you! A booking representative will contact you shortly.</p>
+    </div>
+
+    <div class="footer">© Taniti Tourism &nbsp;|&nbsp; <span id="photo-credit"></span></div>
+  </div>
+</body>
+</html>
